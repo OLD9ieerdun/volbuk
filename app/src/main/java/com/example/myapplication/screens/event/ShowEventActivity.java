@@ -24,7 +24,7 @@ public class ShowEventActivity extends AppCompatActivity {
 
     private TextView tvName, tvData, tvResponsible, tvQuantity, tvPlace, tvDirection, tvDescription;
     private CheckBox checkBox;
-    private DatabaseReference mDataBase;
+//    private DatabaseReference mDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class ShowEventActivity extends AppCompatActivity {
         tvPlace = findViewById(R.id.tvEventPlace);
         tvDescription = findViewById(R.id.tvEventDescription);
         checkBox = findViewById(R.id.checkBox);
-        mDataBase = FirebaseDatabase.getInstance().getReference("Event");
+//        mDataBase = FirebaseDatabase.getInstance().getReference("Event");
     }
 
     private void getIntentMain(){
@@ -78,9 +78,9 @@ public class ShowEventActivity extends AppCompatActivity {
         if(checkBox.isChecked()){
             checkBox.setClickable(false);
 
-            String id = mDataBase.getKey();
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            mDataBase.push().setValue(user.getUid());
+//            String id = mDataBase.getKey();
+//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//            mDataBase.push().setValue(user.getUid());
         }
     }
 
