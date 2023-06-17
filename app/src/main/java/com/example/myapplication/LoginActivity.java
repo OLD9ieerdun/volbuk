@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText edLogin, edPassword;
     private FirebaseAuth mAuth;
-    private Button bStart, bExit, bSignIn;
+    private Button bReg, bStart, bExit, bSignIn;
     private TextView tvUserEmail, tvGreetings;
 
     @Override
@@ -52,10 +52,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init(){
-        edLogin = findViewById(R.id.edEmail);
-        edPassword = findViewById(R.id.edPassword);
+        edLogin = findViewById(R.id.edLogEmail);
+        edPassword = findViewById(R.id.edLogPassword);
         tvGreetings = findViewById(R.id.tvGreetings);
         bSignIn  = findViewById(R.id.bSignIn);
+        bReg  = findViewById(R.id.bReg);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -94,6 +95,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void onClickSignUp(View view){
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void onClickStart(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -110,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         edLogin.setVisibility(View.GONE);
         edPassword.setVisibility(View.GONE);
         bSignIn.setVisibility(View.GONE);
+        bReg.setVisibility(View.GONE);
         tvGreetings.setVisibility(View.GONE);
 
         bStart.setVisibility(View.VISIBLE);
@@ -125,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         edLogin.setVisibility(View.VISIBLE);
         edPassword.setVisibility(View.VISIBLE);
         bSignIn.setVisibility(View.VISIBLE);
+        bReg.setVisibility(View.VISIBLE);
         tvGreetings.setVisibility(View.VISIBLE);
     }
 }

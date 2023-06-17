@@ -12,26 +12,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:text="Войдите в свою\nучётную запись!"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edEmail"
+        android:id="@+id/edLogEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         android:ems="10"
         android:hint="Почта"
         android:inputType="text"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/edPassword"
-        app:layout_constraintEnd_toEndOf="@+id/edPassword"
-        app:layout_constraintStart_toStartOf="@+id/edPassword" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/edLogPassword"
+        app:layout_constraintEnd_toEndOf="@+id/edLogPassword"
+        app:layout_constraintStart_toStartOf="@+id/edLogPassword" />
 
     <EditText
-        android:id="@+id/edPassword"
+        android:id="@+id/edLogPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -39,7 +39,7 @@
         android:ems="10"
         android:hint="Пароль"
         android:inputType="text"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,13 +49,29 @@
         android:id="@+id/bSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="128dp"
         android:onClick="onClickSignIn"
         android:text="Войти"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edPassword"
-        app:layout_constraintStart_toStartOf="@+id/edPassword" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edLogPassword" />
+
+    <Button
+        android:id="@+id/bReg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="onClickSignUp"
+        android:text="Зарегистрироваться"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/bSignIn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/bSignIn" />
 
     <TextView
         android:id="@+id/tvUserEmail"
@@ -63,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="176dp"
         android:text="TextView"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +94,7 @@
         android:layout_marginEnd="64dp"
         android:onClick="onClickStart"
         android:text="Войти"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +107,7 @@
         android:layout_marginTop="32dp"
         android:onClick="onClickExitLog"
         android:text="Выйти из аккаунта"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/bStart"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/bStart"

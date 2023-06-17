@@ -1,17 +1,22 @@
 package com.example.myapplication.models;
 
 public class User {
-    public String name, secName, email, data, post;
-    public Boolean book;
+    public String id, name, secName, email, data, password;
     public Integer point;
 
-    public User(String name, String secName, String email, String data, String post, Boolean book, Integer point) {
+    public User(){
+
+    };
+
+    public User(String id, String name, String secName, String email, String password, String data, Integer point) {
+        this.id = id;
         this.name = name;
         this.secName = secName;
+        this.password = password;
         this.email = email;
         this.data = data;
-        this.post = post;
-        this.book = book;
+        //this.post = post;
+        //this.book = book;
         this.point = point;
     }
 }

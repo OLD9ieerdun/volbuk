@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.Constant;
 import com.example.myapplication.R;
 import com.example.myapplication.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +28,7 @@ public class ShowEventActivity extends AppCompatActivity {
 
     private TextView tvName, tvData, tvResponsible, tvQuantity, tvPlace, tvDirection, tvDescription;
     private CheckBox checkBox;
-//    private DatabaseReference mDataBase;
+    private DatabaseReference mDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,7 @@ public class ShowEventActivity extends AppCompatActivity {
         tvPlace = findViewById(R.id.tvEventPlace);
         tvDescription = findViewById(R.id.tvEventDescription);
         checkBox = findViewById(R.id.checkBox);
-//        mDataBase = FirebaseDatabase.getInstance().getReference("Event");
+        mDataBase = FirebaseDatabase.getInstance().getReference();
     }
 
     private void getIntentMain(){
@@ -77,6 +81,8 @@ public class ShowEventActivity extends AppCompatActivity {
     public void onClickCheck(View view){
         if(checkBox.isChecked()){
             checkBox.setClickable(false);
+
+            String unique_key = mDataBase.child("Request").push().getKey();
 
 //            String id = mDataBase.getKey();
 //            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
