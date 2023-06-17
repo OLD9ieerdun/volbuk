@@ -1,3 +1,47 @@
 <resources>
-    <string name="app_name">My Application</string>
+
+    <!--header-->
+    <string name="app_profile">Профиль</string>
+    <string name="app_list_of_events">Список мероприятий</string>
+    <string name="app_organizer">Организатор</string>
+    <string name="app_event_report">Отчёт о мероприятии</string>
+
+    <!--login_account-->
+    <string name="app_enter">Войти</string>
+    <string name="app_register">Зарегистрироваться</string>
+    <string name="app_email">Почта</string>
+    <string name="app_password">Пароль</string>
+
+
+    <!--activity_main-->
+
+    <string name="app_name">Volonter</string>
+    <string name="app_header">Профиль</string>
+    <string name="app_full_name">Зубенко Михаил Петрович</string>
+
+    <string name="app_status_class">Бриллиантовый</string>
+    <string name="app_status_info">Статус волонтёра</string>
+
+
+    <string name="app_main_scores">Баллы волонтёра</string>
+    <string name="app_main_scores_number">1000</string>
+    <string name="app_main_planned">Запланированных мероприятий</string>
+    <string name="app_main_planned_number">3</string>
+    <string name="app_main_completed">Количество пройденных мероприятий</string>
+    <string name="app_main_completed_number">15</string>
+
+
+
+    <!--registration_for_the_event-->
+    <string name="app_check_events_1">Мероприятие</string>
+    <string name="app_check_events_2">№2724788</string>
+
+    <!--my_events_list-->
+    <string name="app_my_events_list">Мои события</string>
+
+
+    <!--my_events-->
+    <string name="app_my_events_1">Мероприятие</string>
+    <string name="app_my_events_2">№2724788</string>
+
 </resources>
