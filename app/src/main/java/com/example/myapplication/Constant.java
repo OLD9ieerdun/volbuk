@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 public class Constant {
+    public final static String EVENT_ID = "event_id";
     public final static String EVENT_NAME = "event_name";
     public final static String EVENT_QUANTITY = "event_quantity";
     public final static String EVENT_DATA = "event_data";

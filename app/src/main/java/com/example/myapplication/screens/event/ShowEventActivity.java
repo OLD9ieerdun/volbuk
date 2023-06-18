@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.Constant;
 import com.example.myapplication.R;
+import com.example.myapplication.models.ApplicationEvent;
 import com.example.myapplication.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class ShowEventActivity extends AppCompatActivity {
@@ -65,9 +67,9 @@ public class ShowEventActivity extends AppCompatActivity {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String name = snapshot.child("name").getValue(String.class);
-                    String secName = snapshot.child("secName").getValue(String.class);
-                    tvResponsible.setText("Руководитель мероприятия:\n" + secName + " " + name);
+                    String respName = snapshot.child("name").getValue(String.class);
+                    String respSecName = snapshot.child("secName").getValue(String.class);
+                    tvResponsible.setText("Руководитель мероприятия:\n" + respSecName + " " + respName);
                 }
 
                 @Override
@@ -78,15 +80,46 @@ public class ShowEventActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent i = getIntent();
+        String eventId = i.getStringExtra(Constant.EVENT_ID);
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child("Request").child(eventId).orderByChild("userName").equalTo(uid);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()>0) {
+                    //username found
+                    checkBox.setClickable(false);
+                    checkBox.setChecked(true);
+                }else{
+                    // username not found
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void onClickCheck(View view){
         if(checkBox.isChecked()){
             checkBox.setClickable(false);
 
-            String unique_key = mDataBase.child("Request").push().getKey();
+            Intent i = getIntent();
+            String eventName = i.getStringExtra(Constant.EVENT_NAME);
+            String eventId = i.getStringExtra(Constant.EVENT_ID);
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            ApplicationEvent newAppEvent = new ApplicationEvent(eventId, eventName, uid);
 
-//            String id = mDataBase.getKey();
-//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//            mDataBase.push().setValue(user.getUid());
+            mDataBase.child("Request").child(eventId).child(uid).setValue(newAppEvent);
+
+            Toast.makeText(getApplicationContext(), "Сохранено", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             String userName = "Вы вошли как:\n" + cUser.getEmail();
             tvUserEmail.setText(userName);
 
-            Toast.makeText(this, "User not null" + cUser.getEmail(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "User not null " + cUser.getEmail(), Toast.LENGTH_SHORT).show();
         } else {
             notSigned();
 

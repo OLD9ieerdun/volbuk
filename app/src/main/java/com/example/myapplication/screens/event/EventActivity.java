@@ -80,6 +80,7 @@ public class EventActivity extends AppCompatActivity {
                 Event event = listTemp.get(position);
                 Intent i = new Intent(EventActivity.this, ShowEventActivity.class);
                 i.putExtra(Constant.EVENT_NAME, event.name);
+                i.putExtra(Constant.EVENT_ID, event.id);
                 i.putExtra(Constant.EVENT_DIRECTION, event.direction);
                 i.putExtra(Constant.EVENT_QUANTITY, event.quantity);
                 i.putExtra(Constant.EVENT_DATA, event.data);

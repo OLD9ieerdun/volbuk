@@ -60,15 +60,15 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(point <= 201){
-                    tvPointClass.setText("Медный уровень");
+                    tvPointClass.setText("Медный");
                 } else if (point <= 401) {
-                    tvPointClass.setText("Бронзовый уровень");
+                    tvPointClass.setText("Бронзовый");
                 } else if (point <= 601) {
-                    tvPointClass.setText("Серебряный уровень");
+                    tvPointClass.setText("Серебряный");
                 } else if (point <= 801) {
-                    tvPointClass.setText("Золотой уровень");
+                    tvPointClass.setText("Золотой");
                 } else if (point <= 1000) {
-                    tvPointClass.setText("Бриллиантовый уровень");
+                    tvPointClass.setText("Бриллиантовый");
                 }
 
                 String photoUrl = dataSnapshot.child("imageUrl").getValue(String.class);
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMain (View view){
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }

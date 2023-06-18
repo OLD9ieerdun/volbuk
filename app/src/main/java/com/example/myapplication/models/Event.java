@@ -3,10 +3,11 @@ package com.example.myapplication.models;
 import androidx.annotation.NonNull;
 
 public class Event {
-    public String name, direction, data, responsible, place, description;
+    public String id, name, direction, data, responsible, place, description;
     public Integer quantity;
 
-    public Event(String name, String direction, String data, String responsible, String place, String description, Integer quantity) {
+    public Event(String id, String name, String direction, String data, String responsible, String place, String description, Integer quantity) {
+        this.id = id;
         this.name = name;
         this.direction = direction;
         this.data = data;
