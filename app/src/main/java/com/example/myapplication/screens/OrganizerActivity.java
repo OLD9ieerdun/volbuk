@@ -63,10 +63,12 @@ public class OrganizerActivity extends AppCompatActivity {
                 if(listData.size() > 0)listData.clear();
                 if(listTemp.size() > 0)listTemp.clear();
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
+
                     Event event = ds.getValue(Event.class);
                     assert event != null;
-                    if(event.responsible != uid){
+                    if(event.responsible.equals(uid)){
                         listData.add(event.name);
                         //Log.d("listTemp", event.toString());
                         listTemp.add(event);
@@ -88,7 +90,7 @@ public class OrganizerActivity extends AppCompatActivity {
             @Override
             public void onItemClick (AdapterView < ? > parent, View view,int position, long id){
                 Event event = listTemp.get(position);
-                Intent i = new Intent(OrganizerActivity.this, ShowEventActivity.class);
+                Intent i = new Intent(OrganizerActivity.this, ShowOrganizerActivity.class);
                 i.putExtra(Constant.EVENT_NAME, event.name);
                 i.putExtra(Constant.EVENT_ID, event.id);
                 i.putExtra(Constant.EVENT_DIRECTION, event.direction);
@@ -100,6 +102,12 @@ public class OrganizerActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public void onClickCreate (View view){
+        Intent intent = new Intent(this, OrganizerCreateActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void onClickMain (View view){

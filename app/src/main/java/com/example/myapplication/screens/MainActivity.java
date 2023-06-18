@@ -2,12 +2,14 @@ package com.example.myapplication.screens;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvName, tvSecName, tvPoint, tvPointClass;
 
     private ImageView imView;
+    private ConstraintLayout layoutStudent, layoutCounselor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         tvSecName = findViewById(R.id.tvSecName);
         tvPoint = findViewById(R.id.tvPoint);
         tvPointClass = findViewById(R.id.tvPointClass);
+        layoutStudent = findViewById(R.id.layoutStudent);
+        layoutCounselor = findViewById(R.id.layoutCounselor);
 
         imView = findViewById(R.id.imView);
 
@@ -49,11 +54,14 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String secName = dataSnapshot.child("secName").getValue(String.class);
+                String post = dataSnapshot.child("post").getValue(String.class);
                 Integer point = dataSnapshot.child("point").getValue(Integer.class);
 
                 tvName.setText(name);
                 tvSecName.setText(secName);
                 tvPoint.setText(String.valueOf(point));
+
+                Toast.makeText(getApplicationContext(), post, Toast.LENGTH_SHORT).show();
 
                 if(point > 1000){
                     point = 1000;
@@ -73,6 +81,38 @@ public class MainActivity extends AppCompatActivity {
 
                 String photoUrl = dataSnapshot.child("imageUrl").getValue(String.class);
                 Glide.with(MainActivity.this).load(photoUrl).into(imView);
+
+                if(post == "Вожатый"){
+                    layoutStudent.setVisibility(View.GONE);
+
+                    layoutCounselor.setVisibility(View.VISIBLE);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
+    }
+
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("User").child(uid);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String post = dataSnapshot.child("post").getValue(String.class);
+
+
+                Toast.makeText(getApplicationContext(), post, Toast.LENGTH_SHORT).show();
+
+
+                if(post.equals("Вожатый")){
+                    layoutStudent.setVisibility(View.GONE);
+
+                    layoutCounselor.setVisibility(View.VISIBLE);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}

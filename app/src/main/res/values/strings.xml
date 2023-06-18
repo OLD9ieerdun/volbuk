@@ -31,10 +31,15 @@
     <string name="app_main_completed_number">15</string>
 
 
-
     <!--registration_for_the_event-->
     <string name="app_check_events_1">Мероприятие</string>
     <string name="app_check_events_2">№2724788</string>
+
+    <!--organizer_create-->
+    <string name="app_organizer_create">Создание мероприятия</string>
+
+    <!--show_organizer_event-->
+    <string name="app_show_organizer_event">Управление мероприятием</string>
 
     <!--my_events_list-->
     <string name="app_my_events_list">Мои события</string>
@@ -43,5 +48,16 @@
     <!--my_events-->
     <string name="app_my_events_1">Мероприятие</string>
     <string name="app_my_events_2">№2724788</string>
+
+    <string-array name="direction">
+        <item>Социальное</item>
+        <item>Экологическое</item>
+        <item>Культурное</item>
+        <item>Спортивное</item>
+        <item>Патриотическое</item>
+        <item>Корпоративное</item>
+        <item>Медиаволонтёрство</item>
+        <item>Зооволонтёрство</item>
+    </string-array>
 
 </resources>

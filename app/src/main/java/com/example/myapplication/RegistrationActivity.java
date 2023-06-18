@@ -25,7 +25,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText edName, edSecName, edData, edEmail, edPassword;
     private DatabaseReference mDataBase;
     private FirebaseAuth mAuth;
-    private String USER_KEY = "User";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
         edEmail = findViewById(R.id.edEmail);
         edData = findViewById(R.id.edData);
         edPassword = findViewById(R.id.edPassword);
-        mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
+        mDataBase = FirebaseDatabase.getInstance().getReference("Request");
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -59,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        User newUser = new User(id, name, sec_name, email, password, data, 0);
+                        User newUser = new User(id, name, sec_name, "Студент", email, password, data, 0);
 
                         mDataBase.child(id).setValue(newUser);
 
