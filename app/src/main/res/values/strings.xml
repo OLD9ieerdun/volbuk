@@ -53,6 +53,15 @@
     <string name="app_request">Заявки</string>
     <string name="app_request_toggle1">Новые\nучастники</string>
     <string name="app_request_toggle2">Заявки на\nмероприятия</string>
+    <string name="app_request_user">Данные пользователя</string>
+    <string name="app_request_user_create">Добавить пользователя</string>
+
+    <!--user_data-->
+    <string name="app_user_data_name">Имя</string>
+    <string name="app_user_data_secname">Фамилия</string>
+    <string name="app_user_data_data">Дата рождения</string>
+    <string name="app_user_data_email">Почта</string>
+    <string name="app_user_data_post">Должность</string>
 
     <!--direction-->
     <string-array name="direction">
@@ -64,6 +73,12 @@
         <item>Корпоративное</item>
         <item>Медиаволонтёрство</item>
         <item>Зооволонтёрство</item>
+    </string-array>
+
+    <!--post-->
+    <string-array name="post">
+        <item>Студент</item>
+        <item>Вожатый</item>
     </string-array>
 
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -20,6 +21,7 @@ import com.example.myapplication.models.User;
 import com.example.myapplication.screens.event.EventActivity;
 import com.example.myapplication.screens.organizer.OrganizerActivity;
 import com.example.myapplication.screens.organizer.OrganizerCreateActivity;
+import com.example.myapplication.screens.organizer.ShowOrganizerActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,19 +37,24 @@ public class RequestActivity extends AppCompatActivity {
     private RadioGroup toggle;
     private RadioButton rbUser, rbEvent;
     private ListView lvUser, lvEvent;
-    private ArrayAdapter<String> adapter;
-    private List<String> listData;
-    private List<User> listTemp1;
-    private List<ApplicationEvent> listTemp2;
-    private DatabaseReference mDataBase;
+    private ArrayAdapter<String> eventAdapter, userAdapter;
+    private List<String> listUserData;
+    private List<String> listEventData;
+    private List<User> listUserTemp;
+    private List<Event> listEventTemp;
+    private DatabaseReference rDataBase, eDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
         init();
+
         getEventDataFromDB();
-//        getUserDataFromDB();
+        //
+
+        getUserDataFromDB();
+        setOnClickUserItem();
 
         toggle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -66,39 +73,50 @@ public class RequestActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void init(){
         toggle = findViewById(R.id.toggle);
         rbUser = findViewById(R.id.rbUser);
         rbEvent = findViewById(R.id.rbEvent);
-        lvUser = findViewById(R.id.lvUser);
-        lvEvent = findViewById(R.id.lvEvent);
 
-        listData = new ArrayList<>();
-        listTemp1 = new ArrayList<>();
-        listTemp2 = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-        //listView.setAdapter(adapter);
-        //mDataBase = FirebaseDatabase.getInstance().getReference();
+        lvEvent = findViewById(R.id.lvEvent);
+        lvUser = findViewById(R.id.lvUser);
+
+        listUserData = new ArrayList<>();
+        listEventData = new ArrayList<>();
+        listUserTemp = new ArrayList<>();
+        listEventTemp = new ArrayList<>();
+
+        eventAdapter = new ArrayAdapter<>(RequestActivity.this, android.R.layout.simple_list_item_1, listEventData);
+        lvEvent.setAdapter(eventAdapter);
+        userAdapter = new ArrayAdapter<>(RequestActivity.this, android.R.layout.simple_list_item_1, listUserData);
+        lvUser.setAdapter(userAdapter);
+
+        eDataBase = FirebaseDatabase.getInstance().getReference("Event");
+        rDataBase = FirebaseDatabase.getInstance().getReference("Request");
     }
 
     private void getEventDataFromDB(){
-        mDataBase = FirebaseDatabase.getInstance().getReference("ApplicationEvent").child("34sefun898");
-        lvEvent.setAdapter(adapter);
         ValueEventListener vListener = new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(listData.size() > 0)listData.clear();
-                if(listTemp2.size() > 0)listTemp2.clear();
+                if(listEventData.size() > 0)listEventData.clear();
+                if(listEventTemp.size() > 0)listEventTemp.clear();
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    ApplicationEvent apEvent = ds.getValue(ApplicationEvent.class);
-                    assert apEvent != null;
-                    listData.add(apEvent.userName);
-                    //Log.d("listTemp", event.toString());
-                    listTemp2.add(apEvent);
+
+                    Event event = ds.getValue(Event.class);
+                    assert event != null;
+                    if(event.responsible.equals(uid)){
+                        listEventData.add(event.name);
+                        //Log.d("listTemp", event.toString());
+                        listEventTemp.add(event);
+                    }
                 }
-                adapter.notifyDataSetChanged();
+                eventAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -106,34 +124,70 @@ public class RequestActivity extends AppCompatActivity {
 
             }
         };
-        mDataBase.addValueEventListener(vListener);
+        eDataBase.addValueEventListener(vListener);
     }
 
-//    private void getUserDataFromDB(){
-//        mDataBase = FirebaseDatabase.getInstance().getReference("Request");
-//        lvUser.setAdapter(adapter);
-//        ValueEventListener vListener = new ValueEventListener(){
+//    private void setOnClickItem(){
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if(listData.size() > 0)listData.clear();
-//                if(listTemp1.size() > 0)listTemp1.clear();
-//                for(DataSnapshot ds : dataSnapshot.getChildren()){
-//                    User user = ds.getValue(User.class);
-//                    assert user != null;
-//                    listData.add(user.name);
-//                    //Log.d("listTemp", event.toString());
-//                    listTemp1.add(user);
-//                }
-//                adapter.notifyDataSetChanged();
+//            public void onItemClick (AdapterView < ? > parent, View view,int position, long id){
+//                Event event = listTemp.get(position);
+//                Intent i = new Intent(OrganizerActivity.this, ShowOrganizerActivity.class);
+//                i.putExtra(Constant.EVENT_NAME, event.name);
+//                i.putExtra(Constant.EVENT_ID, event.id);
+//                i.putExtra(Constant.EVENT_DIRECTION, event.direction);
+//                i.putExtra(Constant.EVENT_QUANTITY, event.quantity);
+//                i.putExtra(Constant.EVENT_DATA, event.data);
+//                i.putExtra(Constant.EVENT_PLACE, event.place);
+//                i.putExtra(Constant.EVENT_RESPONSIBLE, event.responsible);
+//                i.putExtra(Constant.EVENT_DESCRIPTION, event.description);
+//                startActivity(i);
 //            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        };
-//        mDataBase.addValueEventListener(vListener);
+//        });
 //    }
+
+    private void getUserDataFromDB(){
+        ValueEventListener vListener = new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(listUserData.size() > 0)listUserData.clear();
+                if(listUserTemp.size() > 0)listUserTemp.clear();
+
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+
+                    User user = ds.getValue(User.class);
+                    assert user != null;
+                    listUserData.add(user.name);
+                    //Log.d("listTemp", event.toString());
+                    listUserTemp.add(user);
+                }
+                userAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        rDataBase.addValueEventListener(vListener);
+    }
+
+    private void setOnClickUserItem(){
+        lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick (AdapterView < ? > parent, View view,int position, long id){
+                User user = listUserTemp.get(position);
+                Intent i = new Intent(RequestActivity.this, UserRequestActivity.class);
+                i.putExtra(Constant.USER_ID, user.id);
+                i.putExtra(Constant.USER_NAME, user.name);
+                i.putExtra(Constant.USER_SEC_NAME, user.secName);
+                i.putExtra(Constant.USER_PASSWORD, user.password);
+                i.putExtra(Constant.USER_EMAIL, user.email);
+                i.putExtra(Constant.USER_DATA, user.data);
+                startActivity(i);
+            }
+        });
+    }
 
     public void onClickMain (View view){
         Intent intent = new Intent(this, MainActivity.class);
