@@ -82,7 +82,7 @@ public class ShowEventActivity extends AppCompatActivity {
         String eventId = i.getStringExtra(Constant.EVENT_ID);
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        Query query = reference.child("Request").child(eventId).orderByChild("userName").equalTo(uid);
+        Query query = reference.child("ApplicationEvent").child(eventId).orderByChild("userName").equalTo(uid);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -93,7 +93,6 @@ public class ShowEventActivity extends AppCompatActivity {
                 }else{
                     // username not found
                 }
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

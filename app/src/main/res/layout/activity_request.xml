@@ -28,14 +28,14 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/pink_out_line"
-        android:checkedButton="@+id/offer"
+        android:checkedButton="@id/rbEvent"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_header">
 
         <RadioButton
-            android:id="@+id/search"
+            android:id="@+id/rbUser"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
@@ -44,12 +44,13 @@
             android:layout_weight="1"
             android:background="@drawable/toggle_widget_background"
             android:button="@null"
+            android:checked="true"
             android:gravity="center"
             android:text="@string/app_request_toggle1"
             android:textColor="@color/white" />
 
         <RadioButton
-            android:id="@+id/offer"
+            android:id="@+id/rbEvent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="1dp"
@@ -58,6 +59,7 @@
             android:layout_weight="1"
             android:background="@drawable/toggle_widget_background"
             android:button="@null"
+            android:checked="true"
             android:gravity="center"
             android:text="@string/app_request_toggle2"
             android:textColor="@color/white" />
@@ -129,5 +131,29 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/icon_person_chalkboard_solid" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/lvUser"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEventCounselor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggle" />
+
+    <ListView
+        android:id="@+id/lvEvent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEventCounselor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

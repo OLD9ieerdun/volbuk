@@ -41,28 +41,12 @@
         app:layout_constraintEnd_toEndOf="@+id/edLogPassword"
         app:layout_constraintStart_toStartOf="@+id/edLogPassword" />
 
-    <EditText
-        android:id="@+id/edLogPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:ems="10"
-        android:hint="Пароль"
-        android:inputType="text"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/bSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="128dp"
         android:onClick="onClickSignIn"
         android:text="Войти"
         android:visibility="visible"
@@ -123,5 +107,19 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/bStart"
         app:layout_constraintTop_toBottomOf="@+id/bStart" />
+
+    <EditText
+        android:id="@+id/edLogPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

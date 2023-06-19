@@ -61,8 +61,8 @@
         android:hint="Дата проведения"
         android:inputType="text"
         android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/edCrEventName"
-        app:layout_constraintStart_toStartOf="@+id/edCrEventName"
+        app:layout_constraintEnd_toEndOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="@+id/spinner"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
@@ -110,8 +110,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border"
-        app:layout_constraintEnd_toEndOf="@+id/edCrEventQuantity"
-        app:layout_constraintStart_toStartOf="@+id/edCrEventQuantity"
+        app:layout_constraintEnd_toEndOf="@+id/edCrEventName"
+        app:layout_constraintStart_toStartOf="@+id/edCrEventName"
         app:layout_constraintTop_toBottomOf="@+id/edCrEventName" />
 
     <ScrollView

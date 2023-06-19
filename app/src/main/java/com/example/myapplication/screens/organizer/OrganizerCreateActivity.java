@@ -18,16 +18,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class OrganizerCreateActivity extends AppCompatActivity {
 
-    private EditText edName, edDirection, edData, edPlace, edDescription, edQuantity;
+    private EditText edName, edData, edPlace, edDescription, edQuantity;
     private DatabaseReference mDataBase;
+    private Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_create);
         init();
-
-        Spinner spinner = findViewById(R.id.spinner);
 
         ArrayAdapter<?> adapter =
                 ArrayAdapter.createFromResource(this, R.array.direction,
@@ -44,12 +44,13 @@ public class OrganizerCreateActivity extends AppCompatActivity {
         edDescription = findViewById(R.id.edCrEventDescription);
         edQuantity = findViewById(R.id.edCrEventQuantity);
         mDataBase = FirebaseDatabase.getInstance().getReference();
+        spinner = findViewById(R.id.spinner);
     }
 
     public void onClickCreateSave(View view){
 
         String name = edName.getText().toString();
-        String direction = edDirection.getText().toString();
+        String direction = spinner.getSelectedItem().toString();
         String place = edPlace.getText().toString();
         String data = edData.getText().toString();
         String description = edDescription.getText().toString();
@@ -63,6 +64,10 @@ public class OrganizerCreateActivity extends AppCompatActivity {
         mDataBase.child("Event").child(id).setValue(newEvent);
 
         Toast.makeText(getApplicationContext(), "Сохранено", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, OrganizerActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void onClickCreateExit(View view){
