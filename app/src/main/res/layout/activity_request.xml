@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.event.EventActivity">
+    tools:context=".screens.RequestActivity">
 
     <TextView
         android:id="@+id/text_header"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="#4CAF50"
         android:padding="5sp"
-        android:text="@string/app_list_of_events"
+        android:text="@string/app_request"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="32sp"
@@ -20,61 +20,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="445dp"
-        app:layout_constraintBottom_toTopOf="@+id/layoutEventCounselor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_header" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutEventStudent"
+    <RadioGroup
+        android:id="@+id/toggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/pink_out_line"
+        android:checkedButton="@+id/offer"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_header">
 
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#00FFFFFF"
-            android:onClick="onClickMain"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/icon_house" />
+        <RadioButton
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/app_request_toggle1"
+            android:textColor="@color/white" />
 
-        <ImageButton
-            android:id="@+id/imageButton8"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#00FFFFFF"
-            android:onClick="onClickEvent"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButton5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/icon_clipboard_list_solid" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <RadioButton
+            android:id="@+id/offer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/app_request_toggle2"
+            android:textColor="@color/white" />
+    </RadioGroup>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutEventCounselor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4CAF50"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

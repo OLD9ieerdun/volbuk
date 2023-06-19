@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.screens.event.EventActivity;
+import com.example.myapplication.screens.organizer.OrganizerActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,14 +55,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.child("name").getValue(String.class);
                 String secName = dataSnapshot.child("secName").getValue(String.class);
-                String post = dataSnapshot.child("post").getValue(String.class);
                 Integer point = dataSnapshot.child("point").getValue(Integer.class);
 
                 tvName.setText(name);
                 tvSecName.setText(secName);
                 tvPoint.setText(String.valueOf(point));
-
-                Toast.makeText(getApplicationContext(), post, Toast.LENGTH_SHORT).show();
 
                 if(point > 1000){
                     point = 1000;
@@ -81,12 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
                 String photoUrl = dataSnapshot.child("imageUrl").getValue(String.class);
                 Glide.with(MainActivity.this).load(photoUrl).into(imView);
-
-                if(post == "Вожатый"){
-                    layoutStudent.setVisibility(View.GONE);
-
-                    layoutCounselor.setVisibility(View.VISIBLE);
-                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -141,6 +133,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickOrganizer (View view){
         Intent intent = new Intent(this, OrganizerActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onClickRequest (View view){
+        Intent intent = new Intent(this, RequestActivity.class);
         startActivity(intent);
         finish();
     }

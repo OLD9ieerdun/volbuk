@@ -1,4 +1,4 @@
-package com.example.myapplication.screens;
+package com.example.myapplication.screens.organizer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,19 +9,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.myapplication.Constant;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Event;
+import com.example.myapplication.screens.MainActivity;
+import com.example.myapplication.screens.RequestActivity;
 import com.example.myapplication.screens.event.EventActivity;
-import com.example.myapplication.screens.event.ShowEventActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -124,6 +123,12 @@ public class OrganizerActivity extends AppCompatActivity {
 
     public void onClickOrganizer (View view){
         Intent intent = new Intent(this, OrganizerActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onClickRequest (View view){
+        Intent intent = new Intent(this, RequestActivity.class);
         startActivity(intent);
         finish();
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.OrganizerActivity">
+    tools:context=".screens.organizer.OrganizerActivity">
 
     <ListView
         android:id="@+id/listView"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_header" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/layoutEventCounselor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4CAF50"
@@ -96,6 +96,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:backgroundTint="#00FFFFFF"
+            android:onClick="onClickRequest"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +112,7 @@
         android:layout_height="wrap_content"
         android:onClick="onClickCreate"
         android:text="Создать мероприятие"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEventCounselor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listView" />

@@ -49,6 +49,12 @@
     <string name="app_my_events_1">Мероприятие</string>
     <string name="app_my_events_2">№2724788</string>
 
+    <!--request-->
+    <string name="app_request">Заявки</string>
+    <string name="app_request_toggle1">Новые\nучастники</string>
+    <string name="app_request_toggle2">Заявки на\nмероприятия</string>
+
+    <!--direction-->
     <string-array name="direction">
         <item>Социальное</item>
         <item>Экологическое</item>

@@ -1,4 +1,4 @@
-package com.example.myapplication.screens;
+package com.example.myapplication.screens.organizer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.myapplication.Constant;
 import com.example.myapplication.R;
-import com.example.myapplication.screens.event.EventActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
