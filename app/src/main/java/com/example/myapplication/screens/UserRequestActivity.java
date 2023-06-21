@@ -80,25 +80,26 @@ public class UserRequestActivity extends AppCompatActivity {
             String usPassword = i.getStringExtra(Constant.USER_PASSWORD);
             String usEmail = i.getStringExtra(Constant.USER_EMAIL);
             String usData = i.getStringExtra(Constant.USER_DATA);
+            String URL = i.getStringExtra(Constant.USER_URL);
             String usPost = spUsPost.getSelectedItem().toString();
 
-            User newUser = new User(usId, usName, usSecName, usData, usEmail, usPassword, usPost, 0, true);
+            User newUser = new User(usId, usName, usSecName, usData, usEmail, usPassword, usPost, 0, true,URL);
 
             mDataBase.child("User").child(usId).setValue(newUser);
 
             Toast.makeText(getApplicationContext(), "Сохранено", Toast.LENGTH_SHORT).show();
 
             mDataBase.child("Request").child(usId).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
-                        userSnapshot.getRef().removeValue();
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
+                       userSnapshot.getRef().removeValue();
+                   }
+               }
+               @Override
+               public void onCancelled(DatabaseError databaseError) {
 
-                }
+               }
             });
 
             Intent intent = new Intent(this, RequestActivity.class);

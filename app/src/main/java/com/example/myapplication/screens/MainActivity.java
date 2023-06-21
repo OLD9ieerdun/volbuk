@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvName, tvSecName, tvPoint, tvPointClass;
 
-    private ImageView imView;
+    private ImageView imView, imageView2;
     private ConstraintLayout layoutStudent, layoutCounselor;
 
     @Override
@@ -44,12 +44,14 @@ public class MainActivity extends AppCompatActivity {
         tvPointClass = findViewById(R.id.tvPointClass);
         layoutStudent = findViewById(R.id.layoutStudent);
         layoutCounselor = findViewById(R.id.layoutCounselor);
+        imageView2 = findViewById(R.id.imageView2);
 
         imView = findViewById(R.id.imView);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("User").child(uid);
+
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -62,23 +64,29 @@ public class MainActivity extends AppCompatActivity {
                 tvPoint.setText(String.valueOf(point));
 
                 if(point > 1000){
-                    point = 1000;
+                    point = 100;
                 }
 
                 if(point <= 201){
-                    tvPointClass.setText("Медный");
+                    imageView2.setImageResource(R.drawable.copper);
+                    tvPointClass.setText("Медный уровень");
                 } else if (point <= 401) {
-                    tvPointClass.setText("Бронзовый");
+                    imageView2.setImageResource(R.drawable.bronze);
+                    tvPointClass.setText("Бронзовый уровень");
                 } else if (point <= 601) {
-                    tvPointClass.setText("Серебряный");
+                    imageView2.setImageResource(R.drawable.silver);
+                    tvPointClass.setText("Серебряный уровень");
                 } else if (point <= 801) {
-                    tvPointClass.setText("Золотой");
+                    imageView2.setImageResource(R.drawable.gold);
+                    tvPointClass.setText("Золотой уровень");
                 } else if (point <= 1000) {
-                    tvPointClass.setText("Бриллиантовый");
+                    imageView2.setImageResource(R.drawable.brilliant);
+                    tvPointClass.setText("Бриллиантовый уровень");
                 }
 
-                String photoUrl = dataSnapshot.child("imageUrl").getValue(String.class);
+                String photoUrl = dataSnapshot.child("URLimage").getValue(String.class);
                 Glide.with(MainActivity.this).load(photoUrl).into(imView);
+                Toast.makeText(getApplicationContext(), photoUrl, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}

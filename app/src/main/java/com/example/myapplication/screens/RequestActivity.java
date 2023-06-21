@@ -184,6 +184,7 @@ public class RequestActivity extends AppCompatActivity {
                 i.putExtra(Constant.USER_PASSWORD, user.password);
                 i.putExtra(Constant.USER_EMAIL, user.email);
                 i.putExtra(Constant.USER_DATA, user.data);
+                i.putExtra(Constant.USER_URL, user.URLimage);
                 startActivity(i);
             }
         });

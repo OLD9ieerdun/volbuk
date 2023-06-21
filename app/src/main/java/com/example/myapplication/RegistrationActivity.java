@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText edName, edSecName, edData, edEmail, edPassword;
+    private EditText edName, edSecName, edData, edEmail, edPassword,editURL;
     private DatabaseReference mDataBase;
     private FirebaseAuth mAuth;
 
@@ -41,6 +41,7 @@ public class RegistrationActivity extends AppCompatActivity {
         edPassword = findViewById(R.id.edPassword);
         mDataBase = FirebaseDatabase.getInstance().getReference("Request");
         mAuth = FirebaseAuth.getInstance();
+        editURL = findViewById(R.id.editURL);
     }
 
     public void onClickSave(View view){
@@ -50,6 +51,8 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = edEmail.getText().toString();
         String data = edData.getText().toString();
         String password = edPassword.getText().toString();
+        String URL = editURL.getText().toString();
+
 
 
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(sec_name) && !TextUtils.isEmpty(email)) {
@@ -58,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        User newUser = new User(id, name, sec_name, data, email, password, "Студент", 0, false);
+                        User newUser = new User(id, name, sec_name, data, email, password, "Студент", 0, false,URL);
 
                         mDataBase.child(id).setValue(newUser);
 

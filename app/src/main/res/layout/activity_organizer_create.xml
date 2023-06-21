@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.organizer.OrganizerCreateActivity">
+    tools:context=".screens.organizer.OrganizerCreateActivity"
+    android:background="#DCBEDC">
 
     <TextView
         android:id="@+id/text_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:background="#8B008B"
         android:padding="9sp"
         android:text="@string/app_organizer_create"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"
+        android:fontFamily="@font/coliseumcitalic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -99,6 +101,9 @@
         android:layout_height="wrap_content"
         android:onClick="onClickCreateSave"
         android:text="Создать"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

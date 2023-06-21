@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.UserRequestActivity">
+    tools:context=".screens.UserRequestActivity"
+    android:background="#DCBEDC">
 
     <TextView
         android:id="@+id/text_header2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:background="#8B008B"
         android:padding="9sp"
         android:text="@string/app_request_user"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"
+        android:fontFamily="@font/coliseumcitalic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_user_data_name"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_header2" />
@@ -54,6 +58,8 @@
         android:padding="5dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tvUsSecName"
         app:layout_constraintStart_toStartOf="@+id/tvUsSecName"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -63,7 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         android:onClick="onClickCheckSave"
         android:text="@string/app_request_user_create"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,6 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_user_data_secname"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsName" />
@@ -90,6 +99,8 @@
         android:padding="5dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tvUsData"
         app:layout_constraintStart_toStartOf="@+id/tvUsData"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -100,6 +111,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_user_data_data"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsSecName" />
@@ -113,6 +126,8 @@
         android:padding="5dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tvUsEmail"
         app:layout_constraintStart_toStartOf="@+id/tvUsEmail"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -123,6 +138,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_user_data_email"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsData" />
@@ -136,6 +153,8 @@
         android:padding="5dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/spUsPost"
         app:layout_constraintStart_toStartOf="@+id/spUsPost"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -146,6 +165,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_user_data_post"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsEmail" />
@@ -158,6 +179,7 @@
         android:background="@drawable/border"
         android:padding="5dp"
         android:textAlignment="center"
+        android:fontFamily="@font/coliseumcitalic"
         app:layout_constraintEnd_toEndOf="@+id/checkBox2"
         app:layout_constraintStart_toStartOf="@+id/checkBox2"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />

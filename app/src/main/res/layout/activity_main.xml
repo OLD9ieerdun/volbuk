@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.MainActivity">
+    tools:context=".screens.MainActivity"
+    android:background="#DCBEDC">
 
     <TextView
         android:id="@+id/text_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
         android:padding="5sp"
+        android:background="#8B008B"
         android:text="@string/app_profile"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="32sp"
+        android:fontFamily="@font/coliseumcitalic"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +44,8 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:hint="Имя"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imView"
         app:layout_constraintTop_toBottomOf="@+id/text_header" />
@@ -62,6 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Фамилия"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tvName"
         app:layout_constraintStart_toStartOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -70,9 +77,12 @@
         android:id="@+id/tvPoint"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/coliseumcitalic"
         android:hint="Баллы"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tvSecName"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/tvSecName"
         app:layout_constraintTop_toBottomOf="@+id/tvSecName" />
 
@@ -90,10 +100,10 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
+            android:layout_weight="1"
+            android:src="@android:drawable/sym_def_app_icon" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -103,12 +113,12 @@
 
             <TextView
                 android:id="@+id/tvPointClass"
-                android:layout_width="234dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/coliseumcitalic"
                 android:gravity="start"
-
-                android:text="@string/app_status_class"
+                android:text="Бриллиянтовый уровень"
                 android:textColor="@color/black"
                 android:textSize="28sp"
 
@@ -119,9 +129,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/coliseumcitalic"
                 android:text="@string/app_status_info"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -130,7 +142,7 @@
         android:id="@+id/layoutCounselor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:background="#8A008A"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +210,7 @@
         android:id="@+id/layoutStudent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:background="#8B008B"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -233,28 +245,5 @@
             app:srcCompat="@drawable/icon_clipboard_list_solid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:text="Мои запланированные\nмероприятия"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Пройденные\nмероприятия"
-        app:layout_constraintEnd_toEndOf="@+id/button7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

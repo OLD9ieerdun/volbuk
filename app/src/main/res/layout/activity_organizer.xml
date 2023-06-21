@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.organizer.OrganizerActivity">
+    tools:context=".screens.organizer.OrganizerActivity"
+    android:background="#DCBEDC">
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="356dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/coliseumcitalic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -19,12 +21,13 @@
         android:id="@+id/text_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:background="#8B008B"
         android:padding="5sp"
         android:text="@string/app_organizer"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="32sp"
+        android:fontFamily="@font/coliseumcitalic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Мои мероприятия"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_header" />
@@ -43,7 +48,7 @@
         android:id="@+id/layoutEventCounselor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:background="#8B008B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -111,7 +116,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickCreate"
+        android:fontFamily="@font/coliseumcitalic"
+        android:textSize="20dp"
         android:text="Создать мероприятие"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/layoutEventCounselor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
